@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Reminder
+
+  Created by Milton Martins on 06/06/25.
+  
+*/
+
+"login.welcome.title" = "Entre para acessar suas receitas";
+"login.email.placeholder" = "email@example.com";
+"login.email.label" = "E-mail";
+"login.password.label" = "Password";
+"login.password.placeholder" = "Password";
+"login.button" = "Login";
+
+"login.saveuser.title" = "Login Successful";
+"login.saveuser.message" = "Would you like to save this login?";
+"login.error.title" = "Invalid credentials";
+
+"home.welcome" = "Welcome";
+"home.feedback.button" = "Feedback";
+
+"action.yes" = "Yes";
+"action.no" = "No";
+"action.retry" = "Try again";
