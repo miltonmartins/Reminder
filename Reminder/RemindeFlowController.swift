@@ -51,8 +51,18 @@ extension RemindeFlowController: SplashFlowDelegate {
 }
 
 extension RemindeFlowController: HomeFlowDelegate {
+    func openNewReceipt() {
+        self.navigationController?.navigationBar.isHidden = true
+        let viewController = viewControllerFactory.makeNewReceiptViewController(flowDelegate: self)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func logout() {
         self.navigationController?.popViewController(animated: true)
         self.openLoginBottomSheet()
     }
+}
+
+extension RemindeFlowController: NewReceiptFlowDelegate {
+    
 }

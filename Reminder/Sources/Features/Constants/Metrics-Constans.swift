@@ -21,5 +21,5 @@ public struct Metrics {
     public static let icon: CGFloat = 24
     public static let avatarIcon: CGFloat = 64
     public static let headingBackgroundHeight: CGFloat = 200
-    
+    public static let strokeWidth: CGFloat = 1
 }

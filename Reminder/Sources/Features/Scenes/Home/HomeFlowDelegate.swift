@@ -6,5 +6,6 @@
 //
 
 public protocol HomeFlowDelegate: AnyObject {
+    func openNewReceipt()
     func logout()
 }

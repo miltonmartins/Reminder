@@ -24,6 +24,18 @@
 "home.new.prescription.description" = "Register a new remember to take your medication";
 "home.feedback.button" = "Feedback";
 
+"new.prescription.title" = "New Prescription";
+"new.prescription.subtitle" = "Add your prescription to receive reminders of when to take your medication.";
+
+"new.prescription.medicine.label" = "Medicine";
+"new.prescription.medicine.placeholder" = "Name of the medicine";
+"new.prescription.time.label" = "Time";
+"new.prescription.time.placeholder" = "00:00";
+"new.prescription.recurrence.label" = "Recurrence";
+"new.prescription.take" = "Take now";
+
 "action.yes" = "Yes";
 "action.no" = "No";
 "action.retry" = "Try again";
+"action.add" = "Add";
+"action.select" = "Select";

@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupActionForNewReceipt()
         setupNavigationBar()
         checkForExistingData()
     }
@@ -37,6 +38,12 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = Colors.GrayScale.gray600
         self.view.addSubview(contentView)
         buildHierarchy()
+    }
+    
+    private func setupActionForNewReceipt() {
+        contentView.newPrescriptionButton.tapAction = { [weak self] in
+            self?.didTapNewPrescriptionButton()
+        }
     }
     
     private func setupNavigationBar() {
@@ -75,6 +82,10 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewDelegate {
     func didTapProfileImage() {
         selectProfileImage()
+    }
+    
+    func didTapNewPrescriptionButton() {
+        flowDelegate.openNewReceipt()
     }
 }
 
