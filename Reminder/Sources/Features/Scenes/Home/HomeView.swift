@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeView: UIView {
+    weak public var delegate: HomeViewDelegate?
+    
     let profileBackground: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.GrayScale.gray600
@@ -28,8 +30,10 @@ class HomeView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(systemName: "person.circle.fill")
-        imageView.layer.cornerRadius = Metrics.medium
+        imageView.layer.cornerRadius = Metrics.avatarIcon / 2
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -43,13 +47,32 @@ class HomeView: UIView {
         return label
     }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = Typography.heading
-        label.textColor = Colors.GrayScale.gray100
-        label.text = "Beltrano Silva"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.font = Typography.heading
+        textField.textColor = Colors.GrayScale.gray100
+        textField.returnKeyType = .done
+        textField.placeholder = "Insert your name"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let prescriptionsButton: ButtonHomeView = {
+        let button = ButtonHomeView(
+            icon: UIImage(named: "Paper"),
+            title: "home.my.prescriptions".localized,
+            description: "home.my.prescriptions.description".localized
+        )
+        return button
+    }()
+    
+    let newPrescriptionButton: ButtonHomeView = {
+        let button = ButtonHomeView(
+            icon: UIImage(named: "Pills"),
+            title: "home.new.prescription".localized,
+            description: "home.new.prescription.description".localized
+        )
+        return button
     }()
     
     let feedbackButton: UIButton = {
@@ -66,6 +89,7 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupTextField()
     }
     
     required init?(coder: NSCoder) {
@@ -76,14 +100,16 @@ class HomeView: UIView {
         addSubview(profileBackground)
         profileBackground.addSubview(profileImage)
         profileBackground.addSubview(welcomeLabel)
-        profileBackground.addSubview(nameLabel)
+        profileBackground.addSubview(nameTextField)
         
         addSubview(contentBackground)
         contentBackground.addSubview(feedbackButton)
+        contentBackground.addSubview(prescriptionsButton)
+        contentBackground.addSubview(newPrescriptionButton)
         
         setupConstraints()
+        setupImageGesture()
     }
-    
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -100,8 +126,8 @@ class HomeView: UIView {
             welcomeLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: Metrics.small),
             welcomeLabel.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: Metrics.litte),
-            nameLabel.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
+            nameTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: Metrics.litte),
+            nameTextField.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
             
             contentBackground.topAnchor.constraint(equalTo: profileBackground.bottomAnchor),
             contentBackground.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -111,7 +137,47 @@ class HomeView: UIView {
             feedbackButton.bottomAnchor.constraint(equalTo: contentBackground.bottomAnchor, constant: -Metrics.medium),
             feedbackButton.leadingAnchor.constraint(equalTo: contentBackground.leadingAnchor, constant: Metrics.large),
             feedbackButton.trailingAnchor.constraint(equalTo: contentBackground.trailingAnchor, constant: -Metrics.large),
-            feedbackButton.heightAnchor.constraint(equalToConstant: Metrics.buttonSize)
+            feedbackButton.heightAnchor.constraint(equalToConstant: Metrics.buttonSize),
+            
+            prescriptionsButton.topAnchor.constraint(equalTo: contentBackground.topAnchor, constant: Metrics.huge),
+            prescriptionsButton.leadingAnchor.constraint(equalTo: contentBackground.leadingAnchor, constant: Metrics.large),
+            prescriptionsButton.trailingAnchor.constraint(equalTo: contentBackground.trailingAnchor, constant: -Metrics.large),
+            
+            newPrescriptionButton.topAnchor.constraint(equalTo: prescriptionsButton.bottomAnchor, constant: Metrics.small),
+            newPrescriptionButton.leadingAnchor.constraint(equalTo: prescriptionsButton.leadingAnchor),
+            newPrescriptionButton.trailingAnchor.constraint(equalTo: prescriptionsButton.trailingAnchor)
         ])
+    }
+    
+    private func setupTextField() {
+        nameTextField.addTarget(
+            self,
+            action: #selector(nameTextFieldDidEndEditing),
+            for: .editingDidEnd
+        )
+        nameTextField.delegate = self
+    }
+    
+    private func setupImageGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
+        profileImage.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func profileImageTapped() {
+        delegate?.didTapProfileImage()
+    }
+    
+    @objc
+    private func nameTextFieldDidEndEditing() {
+        let username = nameTextField.text ?? ""
+        UserDefaultsManager.saveUserName(userName: username)
+    }
+}
+
+extension HomeView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

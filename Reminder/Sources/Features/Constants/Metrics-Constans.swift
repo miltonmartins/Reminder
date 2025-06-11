@@ -16,7 +16,10 @@ public struct Metrics {
     public static let litte: CGFloat = 4
     public static let buttonSize: CGFloat = 56
     public static let inputSize: CGFloat = 56
+    public static let viewIconSize: CGFloat = 80
+    public static let iconSmall: CGFloat = 16
     public static let icon: CGFloat = 24
     public static let avatarIcon: CGFloat = 64
     public static let headingBackgroundHeight: CGFloat = 200
+    
 }

@@ -18,6 +18,10 @@
 "login.error.title" = "Invalid credentials";
 
 "home.welcome" = "Welcome";
+"home.my.prescriptions" = "My prescriptions";
+"home.my.prescriptions.description" = "Track medications and manage reminders";
+"home.new.prescription" = "New Prescription";
+"home.new.prescription.description" = "Register a new remember to take your medication";
 "home.feedback.button" = "Feedback";
 
 "action.yes" = "Yes";
