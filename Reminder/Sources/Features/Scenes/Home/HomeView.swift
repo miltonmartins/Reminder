@@ -28,7 +28,7 @@ class HomeView: UIView {
     
     let profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(systemName: "person.circle.fill")
@@ -118,7 +118,7 @@ class HomeView: UIView {
             profileBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
             profileBackground.heightAnchor.constraint(equalToConstant: Metrics.headingBackgroundHeight),
             
-            profileImage.topAnchor.constraint(equalTo: profileBackground.topAnchor, constant: Metrics.medium),
+            profileImage.topAnchor.constraint(equalTo: profileBackground.safeAreaLayoutGuide.topAnchor),
             profileImage.leadingAnchor.constraint(equalTo: profileBackground.leadingAnchor, constant: Metrics.large),
             profileImage.heightAnchor.constraint(equalToConstant: Metrics.avatarIcon),
             profileImage.widthAnchor.constraint(equalToConstant: Metrics.avatarIcon),

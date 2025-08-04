@@ -6,5 +6,5 @@
 //
 
 protocol NewReceiptFlowDelegate: AnyObject {
-    
+    func openPrescriptions()
 }

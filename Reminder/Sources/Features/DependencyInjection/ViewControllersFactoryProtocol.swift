@@ -10,4 +10,5 @@ protocol ViewControllersFactoryProtocol {
     func makeLoginViewController(flowDelegate: LoginFlowDelegate) -> LoginViewController
     func makeHomeViewController(flowDelegate: HomeFlowDelegate) -> HomeViewController
     func makeNewReceiptViewController(flowDelegate: NewReceiptFlowDelegate) -> NewReceiptViewController
+    func makePrescriptionsViewController(flowDelegate: PrescriptionsFlowDelegate) -> PrescriptionsViewController
 }

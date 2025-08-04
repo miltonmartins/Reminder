@@ -7,6 +7,8 @@ target 'Reminder' do
 
   # Pods for Reminder
   pod 'Firebase/Auth'
+  pod 'SQLite.swift'
+  pod 'DGCharts'
 
   target 'ReminderTests' do
     inherit! :search_paths

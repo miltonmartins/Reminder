@@ -7,4 +7,6 @@
 
 protocol HomeViewDelegate: AnyObject {
     func didTapProfileImage()
+    func didTapNewPrescriptionButton()
+    func didTapPrescriptionsButton()
 }

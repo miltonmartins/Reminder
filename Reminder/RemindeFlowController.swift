@@ -51,9 +51,15 @@ extension RemindeFlowController: SplashFlowDelegate {
 }
 
 extension RemindeFlowController: HomeFlowDelegate {
-    func openNewReceipt() {
+    func openNewPrescrition() {
         self.navigationController?.navigationBar.isHidden = true
         let viewController = viewControllerFactory.makeNewReceiptViewController(flowDelegate: self)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openPrescriptions() {
+        self.navigationController?.navigationBar.isHidden = true
+        let viewController = viewControllerFactory.makePrescriptionsViewController(flowDelegate: self)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -63,6 +69,6 @@ extension RemindeFlowController: HomeFlowDelegate {
     }
 }
 
-extension RemindeFlowController: NewReceiptFlowDelegate {
-    
-}
+extension RemindeFlowController: NewReceiptFlowDelegate { }
+
+extension RemindeFlowController: PrescriptionsFlowDelegate { }

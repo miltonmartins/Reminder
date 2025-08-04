@@ -34,6 +34,9 @@
 "new.prescription.recurrence.label" = "Recurrence";
 "new.prescription.take" = "Take now";
 
+"my.prescriptions.title" = "My prescriptions";
+"my.prescriptions.description" = "Track your registered medications and manage reminders.";
+
 "action.yes" = "Yes";
 "action.no" = "No";
 "action.retry" = "Try again";

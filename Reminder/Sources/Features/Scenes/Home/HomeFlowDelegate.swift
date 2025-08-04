@@ -6,6 +6,7 @@
 //
 
 public protocol HomeFlowDelegate: AnyObject {
-    func openNewReceipt()
+    func openNewPrescrition()
+    func openPrescriptions()
     func logout()
 }

@@ -44,6 +44,9 @@ class HomeViewController: UIViewController {
         contentView.newPrescriptionButton.tapAction = { [weak self] in
             self?.didTapNewPrescriptionButton()
         }
+        contentView.prescriptionsButton.tapAction = { [weak self] in
+            self?.didTapPrescriptionsButton()
+        }
     }
     
     private func setupNavigationBar() {
@@ -85,7 +88,11 @@ extension HomeViewController: HomeViewDelegate {
     }
     
     func didTapNewPrescriptionButton() {
-        flowDelegate.openNewReceipt()
+        flowDelegate.openNewPrescrition()
+    }
+    
+    func didTapPrescriptionsButton() {
+        flowDelegate.openPrescriptions()
     }
 }
 

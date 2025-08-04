@@ -1,4 +1,7 @@
 PODS:
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
   - Firebase/Auth (11.14.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 11.14.0)
@@ -46,12 +49,18 @@ PODS:
     - GoogleUtilities/Privacy
   - GTMSessionFetcher/Core (4.5.0)
   - RecaptchaInterop (101.0.0)
+  - SQLite.swift (0.15.3):
+    - SQLite.swift/standard (= 0.15.3)
+  - SQLite.swift/standard (0.15.3)
 
 DEPENDENCIES:
+  - DGCharts
   - Firebase/Auth
+  - SQLite.swift
 
 SPEC REPOS:
   trunk:
+    - DGCharts
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -62,8 +71,10 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - RecaptchaInterop
+    - SQLite.swift
 
 SPEC CHECKSUMS:
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
   Firebase: 38f818b36ca01648fa78ec7402b4ee3076086c2b
   FirebaseAppCheckInterop: a92ba81d0ee3c4cddb1a2e52c668ea51dc63c3ae
   FirebaseAuth: 657b7e792d60e9fdb87408ae5ed15f4438442c1d
@@ -74,7 +85,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   GTMSessionFetcher: fc75fc972958dceedee61cb662ae1da7a83a91cf
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
+  SQLite.swift: 8d054987f02728cc912b0eb5a9659650573a65a2
 
-PODFILE CHECKSUM: 6da3775d55b0db7a314d7ff4ce96a4fa9aa3ea27
+PODFILE CHECKSUM: 130bfa6964feb3e30b208e9c305d28aa3cc3ec18
 
 COCOAPODS: 1.16.2

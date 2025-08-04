@@ -39,4 +39,12 @@ final class ViewControllersFactory: ViewControllersFactoryProtocol {
             flowDelegate: flowDelegate
         )
     }
+    
+    func makePrescriptionsViewController(flowDelegate: any PrescriptionsFlowDelegate) -> PrescriptionsViewController {
+        let prescriptionsView = PrescriptionsView()
+        return PrescriptionsViewController(
+            contentView: prescriptionsView,
+            flowDelegate: flowDelegate
+        )
+    }
 }

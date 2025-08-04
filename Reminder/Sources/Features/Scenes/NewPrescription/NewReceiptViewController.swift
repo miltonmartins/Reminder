@@ -9,6 +9,7 @@ import UIKit
 class NewReceiptViewController: UIViewController {
     private let newReceiptView: NewReceiptView
     private let flowDelegate: NewReceiptFlowDelegate
+    private let viewModel = NewPrescriptionViewModel()
     
     init(
         contentView: NewReceiptView,
@@ -41,10 +42,23 @@ class NewReceiptViewController: UIViewController {
     
     private func setupActions() {
         newReceiptView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        newReceiptView.addButton.addTarget(self, action: #selector(addNewPrescriptionTapped), for: .touchUpInside)
     }
     
     @objc
     private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func addNewPrescriptionTapped() {
+        viewModel.addPrescription(
+            medicine: newReceiptView.medicineInput.getText(),
+            time: newReceiptView.timeInput.getText(),
+            recurrence: newReceiptView.recurrenceInput.getText(),
+            takeNow: false
+        )
+        self.navigationController?.popViewController(animated: false)
+        self.flowDelegate.openPrescriptions()
     }
 }
