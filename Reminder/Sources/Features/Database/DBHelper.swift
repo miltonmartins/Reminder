@@ -93,6 +93,7 @@ class DBHelper {
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             sqlite3_bind_int(statement, 1, Int32(id))
         }
+        sqlite3_step(statement)
         sqlite3_finalize(statement)
     }
 }

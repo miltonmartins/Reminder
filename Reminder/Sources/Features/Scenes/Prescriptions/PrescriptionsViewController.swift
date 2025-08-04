@@ -88,6 +88,7 @@ extension PrescriptionsViewController: UITableViewDataSource, UITableViewDelegat
         cell.periodChip.configureLabel(label: prescription.recurrence)
         cell.onDelete =  { [weak self] in
             self?.viewModel.deletePrescription(id: prescription.id)
+            self?.fetchData()
         }
         
         return cell
